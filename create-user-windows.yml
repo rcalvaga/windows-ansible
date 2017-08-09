@@ -1,0 +1,12 @@
+---
+- name: Add a Windows User
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Add User
+      win_user:
+        name: ansible
+        password: "Redhat1!"
+        state: present
+        groups:
+            - Administrators
