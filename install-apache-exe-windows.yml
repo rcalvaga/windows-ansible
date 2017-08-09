@@ -1,0 +1,17 @@
+---
+- name: Install Apache XAMPP from an EXE 
+  hosts: all 
+ 
+  tasks:
+    - name: Download the Apache XAMPP installer
+      win_get_url:
+        url: 'https://www.apachefriends.org/xampp-files/7.1.6/xampp-win32-7.1.6-0-VC14-installer.exe'
+        dest: 'C:\Users\Administrator\Downloads\xampp-win32-7.1.6-0-VC14-installer.exe'
+        force: no
+
+    - name: Install Apache XAMPP EXE
+      win_package: 
+        path: 'C:\Users\Administrator\Downloads\xampp-win32-7.1.6-0-VC14-installer.exe'
+        productid: auto
+        arguments: --unattendedmodeui minimal --mode unattended 
+        state: present
