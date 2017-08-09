@@ -1,0 +1,24 @@
+---
+# This playbook installs and enables software on Windows hosts
+
+ - name: Install Windows Software
+   hosts: all
+   gather_facts: false
+   tasks:
+
+   - name: Install Telnet-Client Feature
+     win_feature:
+        name: "Telnet-Client"
+        state: absent
+        restart: False
+        include_sub_features: True
+        include_management_tools: True
+
+
+   - name: Install IIS Web-Server with management tools
+     win_feature:
+        name: "Web-Server"
+        state: absent
+        restart: True
+        include_sub_features: False
+        include_management_tools: True
