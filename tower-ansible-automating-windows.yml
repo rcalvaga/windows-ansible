@@ -33,17 +33,17 @@
      register: iis
    - debug: var=iis
         
-   - name: Run powershell script
+   - name: Run a PowerShell Script
      script: files/helloworld.ps1
      debug: script
    - debug: var=script
      
-   - name: run ipconfig
+   - name: Run ipconfig Command
      raw: ipconfig
      register: ipconfig
    - debug: var=ipconfig
    
-   - name: test stat module on file
+   - name: Check Status of file win.ini
      win_stat: path="C:/Windows/win.ini"
      register: stat_file 
    - debug: var=stat_file
@@ -55,3 +55,5 @@
              - "not stat_file.stat.isdir"
              - "stat_file.stat.size > 0"
              - "stat_file.stat.md5"
+     register: stat
+   - debug: var=stat
