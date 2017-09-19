@@ -33,7 +33,7 @@
      register: iis
    - debug: var=iis
    
-   - name: Copy folder to c:\temp (results in C:\Temp\temp_files)
+   - name: Copy JPG archive to c:\Users\Administrator\Downloads
      win_copy:
        src: files/neerdd.jpg
        dest: c:\Users\Administrator\Downloads
