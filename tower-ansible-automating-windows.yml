@@ -10,6 +10,8 @@
        state: present
        groups:
            - Administrators
+     register: user
+   - debug: var=user  
             
    - name: Install Telnet-Client Feature
      win_feature:
