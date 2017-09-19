@@ -32,6 +32,11 @@
        include_management_tools: True
      register: iis
    - debug: var=iis
+   
+   - name: Copy folder to c:\temp (results in C:\Temp\temp_files)
+     win_copy:
+       src: files/neerdd.jpg
+       dest: c:\Users\Administrator\Downloads
         
    - name: Run a PowerShell Script
      script: files/helloworld.ps1
