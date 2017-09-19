@@ -37,6 +37,8 @@
      win_copy:
        src: files/neerdd.jpg
        dest: c:\Users\Administrator\Downloads
+     register: file
+   - debug: var=file
         
    - name: Run a PowerShell Script
      script: files/helloworld.ps1
