@@ -20,6 +20,8 @@
        restart: False
        include_sub_features: True
        include_management_tools: True
+     register: telnet
+   - debug: var=telnet
     
    - name: Install IIS Web-Server with management tools
      win_feature:
@@ -28,9 +30,13 @@
        restart: True
        include_sub_features: False
        include_management_tools: True
+     register: iis
+   - debug: var=iis
         
    - name: Run powershell script
      script: files/helloworld.ps1
+     debug: script
+   - debug: var=script
      
    - name: run ipconfig
      raw: ipconfig
