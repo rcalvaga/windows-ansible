@@ -1,0 +1,52 @@
+---
+- name: Add a Windows User
+  hosts: windows-servers
+  gather_facts: false
+  tasks:
+   - name: Add User
+     win_user:
+       name: ansible
+       password: "Redhat1!"
+       state: present
+       groups:
+           - Administrators
+            
+   - name: Install Telnet-Client Feature
+     win_feature:
+        name: "Telnet-Client"
+        state: absent
+        restart: False
+        include_sub_features: True
+        include_management_tools: True
+    
+    
+   - name: Install IIS Web-Server with management tools
+     win_feature:
+        name: "Web-Server"
+        state: absent
+        restart: True
+        include_sub_features: False
+        include_management_tools: True
+        
+        
+   - name: Run powershell script
+     script: files/helloworld.ps1
+     
+   - name: run ipconfig
+     raw: ipconfig
+     register: ipconfig
+     debug: var=ipconfig
+   
+   
+   - name: test stat module on file
+     win_stat: path="C:/Windows/win.ini"
+     register: stat_file 
+     debug: var=stat_file
+    
+   - name: check stat_file result
+     assert:
+          that:
+             - "stat_file.stat.exists"
+             - "not stat_file.stat.isdir"
+             - "stat_file.stat.size > 0"
+             - "stat_file.stat.md5"
