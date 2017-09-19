@@ -1,9 +1,9 @@
 ---
-- name: Add a Windows User
+- name: Automating Windows with Red Hat Ansible
   hosts: windows-servers
   gather_facts: false
   tasks:
-   - name: Add User
+   - name: Add a Windows Admin User
      win_user:
        name: ansible
        password: "Redhat1!"
@@ -19,7 +19,6 @@
         include_sub_features: True
         include_management_tools: True
     
-    
    - name: Install IIS Web-Server with management tools
      win_feature:
         name: "Web-Server"
@@ -28,7 +27,6 @@
         include_sub_features: False
         include_management_tools: True
         
-        
    - name: Run powershell script
      script: files/helloworld.ps1
      
@@ -36,7 +34,6 @@
      raw: ipconfig
      register: ipconfig
      debug: var=ipconfig
-   
    
    - name: test stat module on file
      win_stat: path="C:/Windows/win.ini"
