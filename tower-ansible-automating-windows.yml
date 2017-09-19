@@ -55,5 +55,3 @@
              - "not stat_file.stat.isdir"
              - "stat_file.stat.size > 0"
              - "stat_file.stat.md5"
-     register: stat
-   - debug: var=stat
