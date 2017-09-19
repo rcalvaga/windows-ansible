@@ -35,7 +35,7 @@
         
    - name: Run a PowerShell Script
      script: files/helloworld.ps1
-     debug: script
+     register: script
    - debug: var=script
      
    - name: Run ipconfig Command
