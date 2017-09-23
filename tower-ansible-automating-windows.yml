@@ -16,7 +16,7 @@
    - name: Install Telnet-Client Feature
      win_feature:
        name: "Telnet-Client"
-       state: absent
+       state: present
        restart: False
        include_sub_features: True
        include_management_tools: True
@@ -26,7 +26,7 @@
    - name: Install IIS Web-Server with management tools
      win_feature:
        name: "Web-Server"
-       state: absent
+       state: present
        restart: True
        include_sub_features: False
        include_management_tools: True
