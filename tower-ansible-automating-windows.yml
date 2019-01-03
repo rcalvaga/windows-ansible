@@ -36,7 +36,7 @@
    - name: Copy JPG archive to c:\Users\Administrator\Downloads
      win_copy:
        src: files/neerdd.jpg
-       dest: c:\Users\Administrator\Downloads
+       dest: c:\Users\Administrator\Downloads\nerd.jpg
      register: file
    - debug: var=file
         
